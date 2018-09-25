@@ -15,6 +15,7 @@ class App extends Component {
   <div id="main-links">
   <Link to="/">Home</Link>
   <Link to="/catalog">Catalog</Link>
+  <img src={logo} alt="My logo" className="logo"/>
   </div>
   <Route path="/" exact component={Home}/>
   <Route path="/catalog" exact component={Catalog}/>

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  color: lightgray
+  color: lightgray;
+  margin: 50px;
 }
 
 .App-logo {
@@ -31,29 +32,20 @@
 .logo {
   height: 25px;
   float: right;
-  margin-right: 50px;
 }
 
-#home-background{
+body{
   background-color: black;
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 
 #main-links {
   height: 25px;
+  margin-bottom: 25px;
 }
 #main-links a{
   color: lightgray;
   margin-top: 5px;
-  margin-left: 25px;
+  margin-right: 25px;
   text-decoration: none;
   float: left;
 }

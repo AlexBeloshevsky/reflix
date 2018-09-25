@@ -7,6 +7,7 @@ import Catalog from "./components/Catalog";
 import MovieDetail from "./components/MovieDetail";
 
 class App extends Component {
+  
   render() {
     return (
 <Router>

@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
+import Home from "./components/Home";
+import Catalog from "./components/Catalog";
+import MovieDetail from "./components/MovieDetail";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+<Router>
+<div className="App">
+  <div id="home-background"></div>
+  <div id="main-links">
+  <Link to="/">Home</Link>
+  <Link to="/catalog">Catalog</Link>
+  </div>
+  <Route path="/" exact component={Home}/>
+  <Route path="/catalog" exact component={Catalog}/>
+  <Route path="/movies/:index" exact render = {({ match }) => <MovieDetail match={match}/>}/>
+</div>
+</Router>
     );
   }
 }

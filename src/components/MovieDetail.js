@@ -10,7 +10,6 @@ class MovieDetail extends Component {
     const entity = this.props.state.movies.filter(f=> {
       return f.title === name
     })[0]
-    console.log(entity)
     return (
       <div>
         <h1>{entity.title} - ({entity.year})</h1>

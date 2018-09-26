@@ -29,7 +29,6 @@ class App extends Component {
     newState.movies[item.id].isRented = true;
     newState.budget = newState.budget - 3;
     this.setState(newState);
-    console.log(this.state.budget)
     } else {
       alert("You don't have enough money for that! return a movie first!");
     }

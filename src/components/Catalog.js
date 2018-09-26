@@ -16,7 +16,6 @@ class Catalog extends Component {
     let newState = {...this.state};
     newState.searchWord = event.target.value.toLowerCase();
     this.setState(newState);
-    console.log(this.state.searchWord)
   }
 
   generateMovies() {

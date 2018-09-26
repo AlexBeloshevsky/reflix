@@ -18,19 +18,27 @@ class App extends Component {
         { id: 2, isRented: false, title: "Beauty and the Beast", year: 1991, img: "https://images-na.ssl-images-amazon.com/images/I/81etFyb9N-L._SL1500_.jpg", descrShort: "A kickass woman named Belle who does not succumb to social norms gets crap from a bunch of village idiots, chief amongst them a total tool named Gaston. Belle shows everyone how great she is when she turns a beast (not Gaston) into a man. Love ensues, but then the villagers fall trap to severe group-think mentality led by the main tool himself." },
         { id: 3, isRented: false, title: "The Sword in the Stone", year: 1963, img: "https://www.disneyinfo.nl/images/laserdiscs/229-1-AS-front.jpg", descrShort: "Arthur is a young boy who just wants to be a knight's squire. Alas, he is dubbed 'Wart' early on, and it was all downhill from there for a while. On a hunting trip he falls in on Merlin, literally. Merlin is a possibly-mentally-unstable-and-ethically-dubious Wizard that turns Arthur into a literate, at-one-point harassed squirrel. Watch to find out what the heck that means." },
         { id: 4, isRented: false, title: "Beauty and the Beast", year: 2016, img: "https://images-na.ssl-images-amazon.com/images/I/51ArFYSFGJL.jpg", descrShort: "Basically the same as the original, except now Hermi-- Emma Wattson plays Belle, fittingly so some would say, given how actively progressive she is regarding women's rights. Rumor has it that in the bonus scenes she whips out a wand and turns Gaston into a toad, but in order to watch those scenes you need to recite a certain incantation." }
-      ]
+      ],
+      budget: 10
     }
   }
 
   addToRentList = (item) => {
+    if (this.state.budget > 3) {
     let newState = {...this.state};
     newState.movies[item.id].isRented = true;
+    newState.budget = newState.budget - 3;
     this.setState(newState);
+    console.log(this.state.budget)
+    } else {
+      alert("You don't have enough money for that! return a movie first!");
+    }
   }
 
   removeFromRentList = (item) => {
     let newState = {...this.state};
     newState.movies[item.id].isRented = false;
+    newState.budget = newState.budget + 3;
     this.setState(newState);
   }
 
@@ -50,6 +58,7 @@ class App extends Component {
   <Route path="/catalog" exact 
   render={()=><Catalog 
     movies={this.state.movies}
+    budget={this.state.budget}
     addToRentList={this.addToRentList}
     removeFromRentList={this.removeFromRentList}
     />}

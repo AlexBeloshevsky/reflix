@@ -64,7 +64,7 @@ class Catalog extends Component {
         placeholder="Search for a movie"
         defaultValue={this.state.searchWord}
         onChange={this.updateText}></input>
-        <span id="budget">Budget: $10</span>
+        <span id="budget">Budget: ${this.props.budget}</span>
         </div>
         <div id="catalogDiv">Catalog:
         <br></br>

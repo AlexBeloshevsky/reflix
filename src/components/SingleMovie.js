@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/catalog.css'
 
 class SingleMovie extends Component {
@@ -16,9 +17,11 @@ class SingleMovie extends Component {
   render() {
     return (
       <div className="imageContainer">
+      <Link to={this.props.link || "/"}>
       <span>
       {this.createImage()}
       </span>
+      </Link>
       <button className={this.props.ButtonClass} onClick={this.addToRentList}>{this.props.buttonContent}</button>
       </div>
     )

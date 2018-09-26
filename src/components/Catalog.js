@@ -5,8 +5,22 @@ import '../styles/catalog.css'
 
 class Catalog extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      searchWord: ""
+    }
+  }
+
+  updateText = (event) => {
+    let newState = {...this.state};
+    newState.searchWord = event.target.value.toLowerCase();
+    this.setState(newState);
+    console.log(this.state.searchWord)
+  }
+
   generateMovies() {
-    let movieList = this.props.movies;
+    let movieList = this.props.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchWord));
     return movieList.map((item, index) => {
       let link = `/movies/${item.title}`
       return (<div key={index} className="imageContainer">
@@ -23,7 +37,9 @@ class Catalog extends Component {
   }
   
   generateRented() {
-    let rentedList = this.props.movies.filter(movie => movie.isRented)
+    let movieList = this.props.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchWord));
+    let rentedList = movieList.filter(movie => movie.isRented)
+    // let rentedList = this.props.movies.filter(movie => movie.isRented)
     return rentedList.map((item, index) => {
       let link = `/movies/${item.title}`
       return (<div key={index} className="imageContainer">
@@ -43,7 +59,11 @@ class Catalog extends Component {
     return (
       <div>
         <div className="catalog-top">
-        <input type="text" placeholder="Search for a movie"></input>
+        <input 
+        type="text" 
+        placeholder="Search for a movie"
+        defaultValue={this.state.searchWord}
+        onChange={this.updateText}></input>
         <span id="budget">Budget: $10</span>
         </div>
         <div id="catalogDiv">Catalog:

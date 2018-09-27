@@ -5,21 +5,19 @@ import '../styles/catalog.css'
 
 class Catalog extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      searchWord: ""
-    }
-  }
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     searchWord: ""
+  //   }
+  // }
 
   updateText = (event) => {
-    let newState = {...this.state};
-    newState.searchWord = event.target.value.toLowerCase();
-    this.setState(newState);
+    this.props.updateText(event)
   }
 
   generateMovies() {
-    let movieList = this.props.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchWord));
+    let movieList = this.props.movies.filter(movie => movie.title.toLowerCase().includes(this.props.searchWord));
     return movieList.map((item, index) => {
       let link = `/movies/${item.title}`
       return (<div key={index} className="imageContainer">
@@ -36,7 +34,7 @@ class Catalog extends Component {
   }
   
   generateRented() {
-    let movieList = this.props.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchWord));
+    let movieList = this.props.movies.filter(movie => movie.title.toLowerCase().includes(this.props.searchWord));
     let rentedList = movieList.filter(movie => movie.isRented)
     // let rentedList = this.props.movies.filter(movie => movie.isRented)
     return rentedList.map((item, index) => {
@@ -61,7 +59,7 @@ class Catalog extends Component {
         <input 
         type="text" 
         placeholder="Search for a movie"
-        defaultValue={this.state.searchWord}
+        defaultValue={this.props.searchWord}
         onChange={this.updateText}></input>
         <span id="budget">Budget: ${this.props.budget}</span>
         </div>
